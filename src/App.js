@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Container,
   Row,
@@ -11,13 +11,13 @@ import {
 } from "reactstrap";
 
 import Point1 from "./pages/point1";
-// import Home from './pages/1';
-// import Point1 from './pages/notFound';
+import Point2 from "./pages/point2";
 
 const points = Array.from(Array(5).keys());
 
 const componentsPoints = {
-  1: Point1
+  1: Point1,
+  2: Point2
 };
 
 const navLinks = (activeTab, setActiveTab) =>
@@ -54,7 +54,7 @@ const tabsContent = activeTab =>
   }, []);
 
 const App = () => {
-  const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(2);
   return (
     <Container className=" pt-2 pb-2">
       <Nav tabs>{navLinks(activeTab, setActiveTab)}</Nav>
