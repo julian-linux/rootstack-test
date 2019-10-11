@@ -7,7 +7,7 @@ import withContent from "../components/HoC/withContent";
 
 import Table from "components/tableRandomUser";
 
-const Point1 = () => {
+const Point3 = () => {
   const { data } = useContext(Context);
   const wordsUsed = {};
   const mostUsedWords = [];
@@ -63,6 +63,6 @@ const Point1 = () => {
   );
 };
 
-Point1.requestContent = "https://randomuser.me/api/?results=5";
+Point3.requestContent = "https://randomuser.me/api/?results=5";
 
-export default withContent(Point1);
+export default withContent(Point3);
