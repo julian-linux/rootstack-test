@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import {
   Row,
   Col,
@@ -10,10 +10,9 @@ import {
   FormFeedback
 } from "reactstrap";
 
-import withContent from "../components/HoC/withContent";
 import Loading from "components/loading";
 
-import Table from "../components/tableSwapi";
+import Table from "../components/tableSwapiShips";
 
 const canTavelMoreThanAWeek = ({ consumables }) =>
   ["week", "weeks", "month", "months", "year", "years"].includes(
@@ -61,16 +60,21 @@ const Point4 = () => {
         setProgress(progress);
         initData(nextUrl);
       } else {
-        window.localStorage.setItem("swapiData", JSON.stringify(externalData));
+        window.localStorage.setItem(
+          "swapiDataShips",
+          JSON.stringify(externalData)
+        );
         setResults(externalData);
         setIsLoading(false);
       }
     };
-    const swapiData = JSON.parse(window.localStorage.getItem("swapiData"));
-    if (!swapiData) {
+    const swapiDataShips = JSON.parse(
+      window.localStorage.getItem("swapiDataShips")
+    );
+    if (!swapiDataShips) {
       initData();
     } else {
-      externalData = swapiData;
+      externalData = swapiDataShips;
       setResults(externalData);
       setIsLoading(false);
     }
@@ -162,6 +166,4 @@ const Point4 = () => {
   );
 };
 
-// Point4.requestContent = "https://swapi.co/api/starships/";
-
-export default withContent(Point4);
+export default Point4;
