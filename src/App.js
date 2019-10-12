@@ -13,13 +13,15 @@ import {
 import Point1 from "./pages/point1";
 import Point2 from "./pages/point2";
 import Point3 from "./pages/point3";
+import Point4 from "./pages/point4";
 
 const points = Array.from(Array(5).keys());
 
 const componentsPoints = {
   1: Point1,
   2: Point2,
-  3: Point3
+  3: Point3,
+  4: Point4
 };
 
 const navLinks = (activeTab, setActiveTab) =>
@@ -56,7 +58,7 @@ const tabsContent = activeTab =>
   }, []);
 
 const App = () => {
-  const [activeTab, setActiveTab] = useState(3);
+  const [activeTab, setActiveTab] = useState(4);
   return (
     <Container className=" pt-2 pb-2">
       <Nav tabs>{navLinks(activeTab, setActiveTab)}</Nav>

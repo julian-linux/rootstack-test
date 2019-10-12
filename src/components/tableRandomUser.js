@@ -37,12 +37,16 @@ const TableRandomUser = ({ data = [] }) => {
           (row, idxRow) =>
             row.length && (
               <tr key={`tr-${idxRow}`}>
-                {row.map((item, idxItem) => (
-                  <td
-                    key={`td-${idxRow}-${idxItem}`}
-                    dangerouslySetInnerHTML={{ __html: item }}
-                  ></td>
-                ))}
+                {row.map((item, idxItem) =>
+                  typeof item === "string" ? (
+                    <td
+                      key={`td-${idxRow}-${idxItem}`}
+                      dangerouslySetInnerHTML={{ __html: item }}
+                    ></td>
+                  ) : (
+                    <td key={`td-${idxRow}-${idxItem}`}>{item}</td>
+                  )
+                )}
               </tr>
             )
         )) ||

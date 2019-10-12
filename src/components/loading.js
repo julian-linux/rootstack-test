@@ -1,10 +1,30 @@
-import React from "react";
-import { Row, Col, Spinner } from "reactstrap";
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import { Row, Col, Spinner, Progress } from "reactstrap";
 
-export default () => (
-  <Row>
-    <Col className="mt-5 mb-5 text-center">
-      <Spinner color="primary" />
-    </Col>
-  </Row>
-);
+const Loading = ({ progress }) => {
+  let loading = <Spinner color="primary" />;
+  if (progress) {
+    loading = (
+      <Fragment>
+        <div className="text-center">{progress}%</div>
+        <Progress animated value={progress} />
+      </Fragment>
+    );
+  }
+  return (
+    <Row>
+      <Col className="mt-5 mb-5 text-center">{loading}</Col>
+    </Row>
+  );
+};
+
+Loading.propTypes = {
+  progress: PropTypes.number
+};
+
+Loading.defaultProps = {
+  progress: 0
+};
+
+export default Loading;
